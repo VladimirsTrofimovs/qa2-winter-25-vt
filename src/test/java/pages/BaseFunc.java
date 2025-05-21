@@ -46,4 +46,10 @@ public class BaseFunc {
         actions.scrollToElement(we);
         actions.perform();
     }
+
+    public void type(By locator, String text) {
+        WebElement inputField = driver.findElement(locator);
+        inputField.clear();
+        inputField.sendKeys(text);
+    }
 }

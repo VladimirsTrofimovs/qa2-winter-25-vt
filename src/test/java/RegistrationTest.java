@@ -1,3 +1,4 @@
+import model.PageObjectUser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -12,16 +13,8 @@ import pages.SignInPage;
 import java.util.List;
 
 public class RegistrationTest {
-    private final By FIRST_NAME = By.id("user_first_name");
-    private final By LAST_NAME = By.id("user_last_name");
-    private final By EMAIL = By.id("user_email");
-    private final By PASSWORD = By.id("user_password");
-    private final By CONFIRM_PASSWORD = By.id("user_password_confirmation");
-    private final By MARKETING_CHECKBOX = By.id("user_marketing_consent_1");
-    private final By NEWS_CHECKBOX_1 = By.id("user_marketing_consent_2");
-    private final By REGISTER_BTN = By.name("commit");
-    private final By ERROR_MSG = By.xpath(".//p[@class='users-session-form__error-message']");
-    private final String PASSWORD_MATCH_ERROR = "nesakrīt ar apstiprinājumu";
+
+//    private PageObjectUser user = new PageObjectUser("Vasya", "Puplin", "vpup@test.com", "Qwerty123#");
 
     @Test
     public void passwordInconsistencyTestOnPageObject() {
@@ -29,8 +22,26 @@ public class RegistrationTest {
         baseFunc.openHomePage()
                 .acceptCookies()
                 .openLogInPage()
-                .openRegistrationPage();
+                .openRegistrationPage()
+                .registerUser(new PageObjectUser(true), true);
 
+
+//        BaseFunc baseFunc = new BaseFunc();
+//        baseFunc.openHomePage()
+//                .acceptCookies()
+//                .openLogInPage()
+//                .openRegistrationPage()
+//                .typeFirstName("Vasya")
+//                .typeLastName("Pupkin")
+//                .typeEmail("vpupkin@test.com")
+//                .typePassword("Password123#")
+//                .confirmPassword("Password123!")
+//                .scrollToRegistrationButton()
+//                .applyForMarketingEmails()
+//                .applyForNews()
+//                .pressRegistrationBtn();
+
+//        ---------ALTERNATIVE----------------
 //        baseFunc.openHomePage();
 //
 //        HomePage homePage = new HomePage(baseFunc);
